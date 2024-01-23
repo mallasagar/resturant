@@ -1,0 +1,57 @@
+/* styles.css */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scrollbar-hide {
+    scrollbar-width: thin;
+    -ms-overflow-style: none;
+  }
+  @keyframes vibration {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-2px); }
+    40% { transform: translateX(2px); }
+    60% { transform: translateX(-2px); }
+    80% { transform: translateX(2px); }
+    100% { transform: translateX(0); }
+  }
+
+  .vibrate {
+    animation: vibration 2s ease-in-out infinite;
+  }
+  
+  @keyframes ringing {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+  }
+  @keyframes skewAnimation {
+    0%, 100% { transform: skewX(0); }
+    50% { transform: skewX(30deg); }
+  }
+
+  .skew-icon {
+    animation: playPauseAnimation 2s ease-in-out infinite;
+    display: inline-block;
+    font-size: 2rem; /* Adjust the font size as needed */
+  }
+
+  @keyframes playPauseAnimation {
+    0%, 100% { animation-delay: 0s; }
+    50% { animation-delay: 1s; }
+  }
+
+
+  .ringing {
+    animation: ringing 0.2s ease-in-out infinite;
+  }
+
+  @keyframes colorChange {
+    0% { background-color: rgb(46, 9, 148); }
+    50% { background-color: #1b42c2; }
+    100% { background-color: rgb(38, 4, 129); }
+  }
+
+  .change-color {
+    animation: colorChange 4s ease-in-out infinite;
+  }

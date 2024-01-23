@@ -1,0 +1,112 @@
+<div class="flex w-full flex-col flex-wrap items-center justify-center m-0 pt-4 gap-6 h-auto bg-amber-800   ">
+    <div class="fixed  bottom-16 end-10 md:bottom-20 md:end-16 z-10  h-20 w-20 flex  justify-center rounded-full  items-center "> 
+        <button (click)="openCart()" class="relative inline-flex items-center p-5 text-sm font-medium text-center text-white bg-red-700 rounded-full hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+            <i  class=" fa-solid fa-cart-shopping text-2xl text-white "  ></i>
+              <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-blue-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900" *ngIf="cartnumber>0">{{cartnumber}}</div>
+            </button>
+    </div>
+  
+       <!-- Alert for Waiter -->
+     <!-- <div class="fixed  bottom-16 start-12 md:bottom-20 md:end-16 z-20 rounded-full  h-20 w-20 flex   justify-center  items-center ">
+        <button data-modal-target="default-modal" data-modal-toggle="default-modal" type="button" class="relative inline-flex items-center p-5 text-sm font-medium text-center text-white bg-red-700 rounded-full hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+            <i class=" fa-solid   fa-bell-concierge text-2xl text-white mx-auto my-auto skew-icon"  ></i>
+              <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-blue-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900" ></div>
+            </button>
+    </div>      -->
+
+    <div data-dial-init class="fixed start-12 bottom-16 z-20 group">
+        <div id="speed-dial-menu-default" class="flex flex-col items-center hidden mb-4 space-y-2">
+            <button type="button" data-modal-target="waiter-modal" data-modal-toggle="waiter-modal" data-tooltip-target="tooltip-waiter" data-tooltip-placement="left" class="flex justify-center items-center w-[52px] h-[52px] text-white  hover:text-gray-900 bg-green-500 rounded-full border border-gray-200 dark:border-gray-600 shadow-sm dark:hover:text-red-600 dark:text-gray-400  dark:bg-gray-700 dark:hover:bg-green-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400">
+                <i class=" fa-solid   fa-phone text-lg text-white mx-auto my-auto skew-icon"  ></i>
+                <span class="sr-only">Waiter</span>
+            </button>
+            <div id="tooltip-waiter" role="tooltip" class="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Call Waiter?
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+            <button type="button"data-modal-target="bill-modal" data-modal-toggle="bill-modal" data-tooltip-target="tooltip-bill" data-tooltip-placement="left" class="flex justify-center items-center w-[52px] h-[52px] text-white  hover:text-gray-900 bg-red-500 rounded-full border border-gray-200 dark:border-gray-600 shadow-sm dark:hover:text-red-600 dark:text-gray-400  dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400">
+  
+                <i class=" fa-solid   fa-bell-concierge text-lg text-white mx-auto my-auto skew-icon"  ></i>
+                <span class="sr-only">Bills</span>
+            </button>
+            <div id="tooltip-bill" role="tooltip" class="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                Request for Bills?
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+        </div>
+        <button type="button" data-dial-toggle="speed-dial-menu-default" aria-controls="speed-dial-menu-default" aria-expanded="false" class="flex items-center justify-center text-white bg-blue-700 rounded-full w-16 h-16 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800 change-color">
+            <svg class="w-5 h-5 transition-transform group-hover:rotate-45" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+            </svg>
+            <span class="sr-only">Open actions menu</span>
+        </button>
+    </div>
+    
+
+    <!-- search input -->
+    <div class="flex justify-center w-full  h-9 sm:h-10 md:h-8   rounded-lg">
+        <input type="search"  [(ngModel)]="searchterm" class="bg-white shadow-inner  border  rounded-lg ps-2 w-64 sm:w-72 md:w-96" placeholder="search...">
+        </div> 
+        <!-- category to be selected -->
+    <div class="w-full  flex flex-nowrap justify-start  items-center  overflow-x-auto scrollbar-hide">
+        <div class="flex mx-auto gap-4 justify-center">
+            <ng-container *ngFor="let category of this.categoryitem">
+                <!-- <div class="flex justify-center  items-center   "> -->
+                        <button (click)="setcategory(category.ParentId)" class="w-32 text-white  text-whitepx-4 py-2 shadow-inner border  shadow-white rounded-full" >{{category.Name | uppercase}}</button>
+                <!-- </div> -->
+            </ng-container>
+        </div>
+        </div>
+    <div  class="flex w-full  flex-wrap justify-center m-0 gap-6 h-auto bg-white py-8">
+            <ng-container *ngFor="let item of menuitem"> 
+            <ng-container *ngIf="this.searchterm===''||  item.Name.toLowerCase().includes(this.searchterm.toLowerCase()) ">
+                <div class="grid grid-cols-6 w-72 grid-rows-2 px-2 py-2   ">
+                    <div class="w-32 h-32 row-start-1 row-end-3 col-start-1 col-end-4  rounded-full flex items-center justify-center z-10 ring-1 ring-offset-2 ring-yellow-200 hover:ring-red-500 hover:ring-offset-4 ">
+                        <img src="https://i1.wp.com/vegecravings.com/wp-content/uploads/2017/03/samosa-recipe-step-by-step-instructions.jpg?fit=1801%2C1717&ssl=1"  alt="{{item.name}}"
+                        class="rounded-full h-32 w-32 transition-transform transform hover:scale-110   duration-300 " style="max-width: 100%;">
+                    </div>
+                    <div class="col-start-3 col-end-7 text-white  flex items-center justify-center row-start-1 h-9 row-end-2 
+                    ring-1 ring-offset-2 ring-yellow-200 bg-yellow-500 rounded-ee-3xl  rounded-ss-3xl z-0 font-serif text-sm font-semibold ">
+                        <span class="items-center align-middle">{{item.Name|uppercase}}</span>
+                    </div>
+                    <div class="col-start-4 col-end-7 row-start-2 row-end-3 ">
+                        <div class="flex flex-col  ">
+                            <span class="text-amber-700 font-bold ms-2">Reviews</span>
+                            <span class="text-red-600 text-xl font-bold ms-1"><span class="text-sm">Rs </span> {{item.ItemPrices[0].SalesPrice}}</span>
+                        </div>
+                    </div>
+                        <span  class="col-start-4 col-end-6 text-center rounded-xl row-start-3 row-end-4 px-4 py-2 bg-yellow-400 hover:bg-yellow-300 "(click)="addtocart(item.Id)">Add</span>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>
+
+
+  
+  <!-- Main modal -->
+  <div id="waiter-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+      <div class="relative px-2 w-full max-w-2xl max-h-full py-4">
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 text-center h-28">
+                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400 me-auto">Calling an Waiter? </p>
+                 <div class="w-40  flex mx-auto">
+                     <button data-modal-hide="waiter-modal" type="button" (click)="getwaiter()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Yes</button>
+                     <button data-modal-hide="waiter-modal" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No</button>
+                </div>
+              </div>
+      </div>
+  </div>
+  
+  <div id="bill-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+      <div class="relative px-2 w-full max-w-2xl max-h-full py-4">
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 text-center h-28">
+                <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400 me-auto">Requesting Bills? </p>
+                 <div class="w-40  flex mx-auto">
+                     <button data-modal-hide="bill-modal" type="button" (click)="getbills()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Yes</button>
+                     <button data-modal-hide="bill-modal" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No</button>
+                </div>
+              </div>
+             
+      </div>
+  </div>
+  
