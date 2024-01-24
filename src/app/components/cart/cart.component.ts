@@ -37,7 +37,7 @@ export class CartComponent {
 
   cartdata(id:any){
     this.sharedservice.numbers$.subscribe((cartid:number[])=>{
-      this.showorder=cartid.length;
+      this.showorder=cartid.length;   //for badge numbers of carts
       this.service.getMenuitem().subscribe((menu: any) => {
         this.cartlist=menu.value.filter((item:any)=>cartid.includes(item.Id))
         this.updatedprice = [];
@@ -102,6 +102,7 @@ export class CartComponent {
     console.log(this.cartlist)
     console.log("total price:", this.price)
     this.sharedservice.clearcart()
+    this.sharedservice.clearcart
   }   
 
 }

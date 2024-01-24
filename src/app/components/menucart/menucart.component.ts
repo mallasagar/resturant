@@ -31,15 +31,10 @@ export class MenucartComponent {
     this.sharedservice.numbers$.subscribe((number:number[])=>{
       this.cartnumber=number.length;
     })
-    this.getquantity
   }
  
 
-getquantity(){
-  this.sharedservice.orders$.subscribe((quantity:number[])=>{
-    console.log(quantity)
-  })
-}
+
 
   setcategory(category:number){
     this.menuservice.getmenuitembyid(category)
@@ -50,47 +45,13 @@ getquantity(){
       }
     })
   }
-//   addtocart(id:number){
-//     this.sharedservice.setcart(id)
-//     this.sharedservice.numbers$.subscribe((cartnumber:number[])=>{
-//       const updatevalue=cartnumber
-//  console.log("Hello",updatevalue)
-//     })
-//   }
-  
-  addtocart(id: number) {
-  
-  
-    this.sharedservice.numbers$
-      .pipe(distinctUntilChanged((prev, curr) => this.arraysAreEqual(prev, curr)))
-      .subscribe((cartnumber: number[]) => {
-        const updatevalue = cartnumber;
-        if(updatevalue.includes(id)){
-          this.toast.success("Added one quantity one more ")
-          
-        }else{
-          this.sharedservice.setcart(id);
-          this.toast.success("id donot exist")
-        }
-      });
-  }
-  
-  // Function to check if two arrays are equal
-  arraysAreEqual(array1: number[], array2: number[]): boolean {
-    if (array1.length !== array2.length) {
-      return false;
-    }
-  
-    for (let i = 0; i < array1.length; i++) {
-      if (array1[i] !== array2[i]) {
-        return false;
-      }
-    }
-  
-    return true;
-  }
-  
 
+  
+  // previous code below for adding item in a cart
+  addtocart(id: number) {
+          this.sharedservice.setcart(id);
+  }
+  
   getMenu(){
     this.menuservice.getMenuitem()
       .subscribe((menu:any)=>{
@@ -104,6 +65,7 @@ getquantity(){
       })
   }
   openCart() {
+   
      this.matdilog.open(CartComponent, {
       width: "600px",
       height: "450px", 
