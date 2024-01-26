@@ -1,23 +1,15 @@
 <div class="flex w-full flex-col flex-wrap items-center justify-center m-0 pt-4 gap-6 h-auto bg-amber-800   ">
-    <div class="fixed  bottom-16 end-10 md:bottom-20 md:end-16 z-10  h-20 w-20 flex  justify-center rounded-full  items-center "> 
-        <button (click)="openCart()" class="relative inline-flex items-center p-5 text-sm font-medium text-center text-white bg-red-700 rounded-full hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+    <div id="speed-dial-menu-default"  class=" fixed  bottom-16 end-10 md:bottom-20 md:end-16 z-10  h-20 w-20 flex  justify-center rounded-full  items-center "> 
+        <button data-modal-target="cart-modal" data-modal-toggle="cart-modal" (click)="openCart()" class="relative inline-flex items-center p-5 text-sm font-medium text-center text-white bg-red-700 rounded-full hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
             <i  class=" fa-solid fa-cart-shopping text-2xl text-white "  ></i>
-              <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-blue-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900" *ngIf="cartnumber>0">{{cartnumber}}</div>
+              <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-blue-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900" *ngIf="quantity>0">{{quantity}}</div>
             </button>
     </div>
-  
-       <!-- Alert for Waiter -->
-     <!-- <div class="fixed  bottom-16 start-12 md:bottom-20 md:end-16 z-20 rounded-full  h-20 w-20 flex   justify-center  items-center ">
-        <button data-modal-target="default-modal" data-modal-toggle="default-modal" type="button" class="relative inline-flex items-center p-5 text-sm font-medium text-center text-white bg-red-700 rounded-full hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
-            <i class=" fa-solid   fa-bell-concierge text-2xl text-white mx-auto my-auto skew-icon"  ></i>
-              <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-blue-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900" ></div>
-            </button>
-    </div>      -->
 
     <div data-dial-init class="fixed start-12 bottom-16 z-20 group">
-        <div id="speed-dial-menu-default" class="flex flex-col items-center hidden mb-4 space-y-2">
+        <div id="speed-dial-menu" class="flex flex-col items-center hidden mb-4 space-y-2">
             <button type="button" data-modal-target="waiter-modal" data-modal-toggle="waiter-modal" data-tooltip-target="tooltip-waiter" data-tooltip-placement="left" class="flex justify-center items-center w-[52px] h-[52px] text-white  hover:text-gray-900 bg-green-500 rounded-full border border-gray-200 dark:border-gray-600 shadow-sm dark:hover:text-red-600 dark:text-gray-400  dark:bg-gray-700 dark:hover:bg-green-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400">
-                <i class=" fa-solid   fa-phone text-lg text-white mx-auto my-auto skew-icon"  ></i>
+                <i class=" fa-solid   fa-phone text-md text-white mx-auto my-auto skew-icon"  ></i>
                 <span class="sr-only">Waiter</span>
             </button>
             <div id="tooltip-waiter" role="tooltip" class="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
@@ -26,15 +18,15 @@
             </div>
             <button type="button"data-modal-target="bill-modal" data-modal-toggle="bill-modal" data-tooltip-target="tooltip-bill" data-tooltip-placement="left" class="flex justify-center items-center w-[52px] h-[52px] text-white  hover:text-gray-900 bg-red-500 rounded-full border border-gray-200 dark:border-gray-600 shadow-sm dark:hover:text-red-600 dark:text-gray-400  dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400">
   
-                <i class=" fa-solid   fa-bell-concierge text-lg text-white mx-auto my-auto skew-icon"  ></i>
+                <i class=" fa-solid   fa-bell-concierge text-md text-white mx-auto my-auto skew-icon"  ></i>
                 <!-- <span class="sr-only">Bills</span> -->
-            </button>
+            </button>  
             <div id="tooltip-bill" role="tooltip" class="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
                 Request for Bills?
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
         </div>
-        <button type="button" data-dial-toggle="speed-dial-menu-default" aria-controls="speed-dial-menu-default" aria-expanded="false" class="flex items-center justify-center text-white bg-blue-700 rounded-full w-16 h-16 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800 change-color">
+        <button type="button" data-dial-toggle="speed-dial-menu" aria-controls="speed-dial-menu" aria-expanded="false" class="flex items-center justify-center text-white bg-blue-700 rounded-full w-16 h-16 hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800 change-color">
             <svg class="w-5 h-5 transition-transform group-hover:rotate-45" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
             </svg>
@@ -50,11 +42,12 @@
         <!-- category to be selected -->
     <div class="w-full  flex flex-nowrap justify-start  items-center  overflow-x-auto scrollbar-hide">
         <div class="flex mx-auto gap-4 justify-center">
+            <button (click)="selectedcategory('all')"  class="w-32 text-white  text-whitepx-4 py-2 shadow-inner ms-4  shadow-white rounded-full" >All</button>
             <ng-container *ngFor="let category of this.categoryitem">
-                <!-- <div class="flex justify-center  items-center   "> -->
-                        <button (click)="setcategory(category.ParentId)" class="w-32 text-white  text-whitepx-4 py-2 shadow-inner border  shadow-white rounded-full" >{{category.Name | uppercase}}</button>
-                <!-- </div> -->
-            </ng-container>
+                <div class="flex justify-center  items-center   ">
+                        <button (click)="selectedcategory(category.ParentId)" class="w-32 text-white  text-whitepx-4 py-2 shadow-inner   shadow-white rounded-full" >{{category.Name | uppercase}}</button>
+                </div>
+            </ng-container> 
         </div>
         </div>
     <div  class="flex w-full  flex-wrap justify-center m-0 gap-6 h-auto bg-white py-8">
@@ -75,7 +68,7 @@
                             <span class="text-red-600 text-xl font-bold ms-1"><span class="text-sm">Rs </span> {{item.ItemPrices[0].SalesPrice}}</span>
                         </div>
                     </div>
-                        <span  class="col-start-4 col-end-6 text-center rounded-xl row-start-3 row-end-4 px-4 py-2 bg-yellow-400 hover:bg-yellow-300 "(click)="addtocart(item.Id)">Add</span>
+                        <span  class="col-start-4 col-end-6 text-center rounded-xl row-start-3 row-end-4 px-4 py-2 bg-yellow-400 hover:bg-yellow-300 "(click)="addtocart(item)">Add</span>
                 </div>
             </ng-container>
         </ng-container>
@@ -84,14 +77,57 @@
 
 
   
-  <!-- Main modal -->
+  <!-- Cart modal -->
+  <div id="cart-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+      <div class="relative w-full max-w-lg max-h-full bg-white">
+            <div class="flex justify-end mb-2">
+                <span data-modal-hide="cart-modal"  class=" text-red-500 text-xl bg-white    font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">X</span>
+            </div>
+            <div class="flex justify-center w-full mb-16" *ngIf="quantity===0" >
+                <span  class="  text-2xl font-bold "  >Select Order First</span>
+            </div>
+            <div  class="flex flex-col  w-full h-72  px-2 items-center  gap-8 rounded-xl overflow-y-auto " >
+                <ng-container *ngFor="let cart of cartlist let z=index" >
+                    <div class=" w-full h-400 grid grid-cols-5  grid-rows-2 gap-2 border  rounded-lg shadow-inner  py-1 " *ngIf="quantity!==0" >
+                        <img src="https://i1.wp.com/vegecravings.com/wp-content/uploads/2017/03/samosa-recipe-step-by-step-instructions.jpg?fit=1801%2C1717&ssl=1"  
+                        style="width: 50vw; height: auto;" class="rounded-full mx-auto my-auto  col-start-1 col-end-3 md:col-end-2 row-start-1  row-end-2 md:row-end-3 h-16 w-16 transition-transform transform hover:scale-110   duration-300  ">
+                        <p class=" col-start-3   text-black col-end-6 md:col-start-2 text-md text-center   md:col-end-5 mx-auto row-start-1 row-end-2  ">{{cart.Name|uppercase}}</p>
+                            <div class=" col-start-1   col-end-3 md:col-start-2 row-start-2 md:row-start-2 row-end-3  md:col-end-4 mx-auto my-auto md:mb-auto flex  gap-2">
+                                <button    (click)="substractquantity(cart)" class="w-8 h-8  shadow-gray-400 shadow-inner text-center  font-bold  rounded-full text-md">
+                                  
+                                    <i class="fa-solid fa-minus"></i>
+                                </button>
+                                <span class="rounded-xl text-black">{{cart.Quantity}}</span>
+                                <button   (click)=" addquantity(cart)"  class="w-8 h-8  font-bold shadow-gray-400 rounded-full shadow-inner text-md  ">
+                                  
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                         <div class="col-start-5  md:col-start-4 col-end-3 md:col-end-4  row-start-2 md:row-start-2 row-end-3  mx-auto my-auto" ><span class="text-red-600 ">Rs.{{cart.NetAmount
+                        }}</span></div> 
+                            <i class="fa-solid fa-trash col-start-5 col-end-6 md:row-start-1 text-red-700 row-start-2 row-end-3 m-auto " (click)="deleteCart(cart)"></i> 
+                    </div>
+                </ng-container>
+            </div>
+            <div  class="flex flex-col w-full " *ngIf="quantity!==0">
+                <div class="flex justify-evenly mb-2 me-16 text-xl" >
+                    <p>Total Quantity: <span class="text-red-500">{{quantity}}</span></p>
+                    <p>Total Amount: <span class="text-red-500" >Rs.{{cart.TotalPrice}}</span></p>
+                </div>
+                <div class="flex justify-around">
+                    <button data-modal-hide="cart-modal" class="border rounded-md px-6 py-2 bg-red-600 hover:bg-red-500 text-white">Cancel</button>
+                    <button data-modal-hide="cart-modal" class="border rounded-md px-6 py-2 bg-green-600 hover:bg-green-500 text-white" (click)="ordersubmit()">Request Order</button>
+                </div>
+            </div>
+      </div>
+  </div>
   <div id="waiter-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
       <div class="relative px-2 w-full max-w-2xl max-h-full py-4">
           <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 text-center h-28">
                 <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400 me-auto">Calling an Waiter? </p>
                  <div class="w-40  flex mx-auto">
-                     <button data-modal-hide="waiter-modal" type="button" (click)="getwaiter()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Yes</button>
-                     <button data-modal-hide="waiter-modal" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No</button>
+                     <button data-modal-hide="waiter-modal" type="button"  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"(click)="callwaiter()">Yes</button>
+                     <button data-modal-hide="waiter-modal" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600" >No</button>
                 </div>
               </div>
       </div>
@@ -102,11 +138,10 @@
           <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 text-center h-28">
                 <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400 me-auto">Requesting Bills? </p>
                  <div class="w-40  flex mx-auto">
-                     <button data-modal-hide="bill-modal" type="button" (click)="getbills()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Yes</button>
+                     <button data-modal-hide="bill-modal" type="button"  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"(click)="billrequest()">Yes</button>
                      <button data-modal-hide="bill-modal" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No</button>
                 </div>
-              </div>
-             
+            </div>
       </div>
   </div>
   

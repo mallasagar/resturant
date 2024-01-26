@@ -8,7 +8,6 @@ import { HttpClientModule } from  '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CartComponent } from './components/cart/cart.component';
 import { HammerModule } from '@angular/platform-browser';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -16,7 +15,6 @@ import { ToastrModule } from 'ngx-toastr';
   declarations: [
     AppComponent,
     MenucartComponent,
-    CartComponent,
   ],
   imports: [
     BrowserModule,
