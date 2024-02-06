@@ -1,6 +1,6 @@
 <div class="flex w-full flex-col flex-wrap items-center justify-center m-0 pt-4 gap-6 h-auto bg-amber-800   ">
     <div id="speed-dial-menu-default"  class=" fixed  bottom-16 end-10 md:bottom-20 md:end-16 z-10  h-20 w-20 flex  justify-center rounded-full  items-center "> 
-        <button id="dot"   data-modal-target="cart-modal" data-modal-toggle="cart-modal" (click)="openCart()" class="relative inline-flex items-center p-5 text-sm font-medium text-center text-white bg-red-700 rounded-full hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+        <button    data-modal-target="cart-modal" data-modal-toggle="cart-modal" (click)="openCart()" class="relative inline-flex items-center p-5 text-sm font-medium text-center text-white bg-red-700 rounded-full hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
             <i  class=" fa-solid fa-cart-shopping text-2xl text-white "  ></i>
             
               <div class="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-blue-500 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900" *ngIf="quantity>0">{{quantity}}</div>
@@ -8,7 +8,7 @@
     </div>
 
     <div data-dial-init class="fixed start-12 bottom-16 z-20 group">
-        <div id="speed-dial-menu" class="flex flex-col items-center hidden mb-4 space-y-2">
+        <div id="speed-dial-menu" class="flex flex-col items-center flex-hidden mb-4 space-y-2">
             <button type="button" data-modal-target="waiter-modal" data-modal-toggle="waiter-modal" data-tooltip-target="tooltip-waiter" data-tooltip-placement="left" class="flex justify-center items-center w-[60px] h-[60px] ">
                 <i class=" fa-solid   fa-phone text-sm  text-green-500 mx-auto my-auto skew-icon"  ></i>
                 <span class="sr-only">Waiter</span>
