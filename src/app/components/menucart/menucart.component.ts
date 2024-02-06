@@ -27,6 +27,7 @@ export class MenucartComponent implements OnInit {
   // prequantity: number[] = [0];
   cart: CartModel= new CartModel(1,1,)
   cartitem:CartItem= new CartItem(1,1,1,[])
+  isButtonActive: boolean = false;
   
   constructor(private menuservice: MenuService,private toast:ToastrService, private matdilog: MatDialog,private elementRef: ElementRef){
   }
@@ -35,9 +36,11 @@ export class MenucartComponent implements OnInit {
     this.getMenu()
     this.getCategorys()
   }
-
-
   
+  activateButton() {
+    this.isButtonActive = !this.isButtonActive;
+  }
+
   // getting all the menu
   getMenu(){
     this.menuservice.getMenuitem()

@@ -55,3 +55,18 @@
   .change-color {
     animation: colorChange 4s ease-in-out infinite;
   }
+
+/* line-animation.component.css */
+@keyframes moveDot {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0px,-15px);
+  }
+}
+
+#dot {
+  animation: moveDot 0.2s ease-in-out infinite alternate;
+}
+
